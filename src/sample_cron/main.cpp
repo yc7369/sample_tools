@@ -19,11 +19,12 @@ std::vector<Task> readTasks(const std::string& filename) {
     std::ifstream file(filename);
     std::string line;
 
+
     while (std::getline(file, line)) {
         std::istringstream iss(line);
         Task task;
         if (!(iss >> task.minute >> task.hour)) {
-            break;
+            continue;
         }
         std::getline(iss, task.command);  // Read the rest of the line as command
         std::cout << "hour:" << task.hour << " minute:" << task.minute
