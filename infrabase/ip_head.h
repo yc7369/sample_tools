@@ -1,17 +1,18 @@
 #include <cstdint>
 
+//"标头"的长度,固定为18字节。"数据"的长度,最短为46字节,最长为1500字节。因此,整个"帧"最短为64字节,最长为1518字节
 // IP 头部结构体
 struct IPHeader {
-    uint8_t version_ihl;    // 版本号和头部长度
-    uint8_t dscp_ecn;        // DSCP 和 ECN 字段
-    uint16_t totalLength;   // 总长度
-    uint16_t identification; // 标识符
-    uint16_t flags_fragOffset; // 标志位和分段偏移
-    uint8_t ttl;             // 存活时间
-    uint8_t protocol;        // 协议类型 (TCP: 6, UDP: 17)
-    uint16_t checksum;       // 校验和
-    uint32_t srcIP;          // 源 IP 地址
-    uint32_t destIP;         // 目标 IP 地址
+    uint8_t version_ihl;        // 版本号和头部长度
+    uint8_t dscp_ecn;           // DSCP 和 ECN 字段
+    uint16_t totalLength;       // 总长度
+    uint16_t identification;    // 标识符
+    uint16_t flags_fragOffset;  // 标志位和分段偏移
+    uint8_t ttl;                // 存活时间
+    uint8_t protocol;           // 协议类型 (TCP: 6, UDP: 17)
+    uint16_t checksum;          // 校验和
+    uint32_t srcIP;             // 源 IP 地址
+    uint32_t destIP;            // 目标 IP 地址
 };
 
 // TCP 头部结构体
@@ -29,8 +30,8 @@ struct TCPHeader {
 
 // UDP 头部结构体
 struct UDPHeader {
-    uint16_t srcPort;        // 源端口
-    uint16_t destPort;       // 目标端口
-    uint16_t length;         // 长度 (头部 + 数据)
-    uint16_t checksum;       // 校验和
+    uint16_t srcPort;   // 源端口
+    uint16_t destPort;  // 目标端口
+    uint16_t length;    // 长度 (头部 + 数据)
+    uint16_t checksum;  // 校验和
 };
