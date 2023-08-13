@@ -1,11 +1,5 @@
 project(redis++)
 
-if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-    cmake_minimum_required(VERSION 3.0.0)
-else()
-    cmake_minimum_required(VERSION 2.8.0)
-endif()
-
 if (NOT DEFINED REDIS_PLUS_PLUS_CXX_STANDARD)
     set(REDIS_PLUS_PLUS_CXX_STANDARD 11)
 endif()
@@ -62,6 +56,6 @@ install(TARGETS ${SHARED_LIB}
         LIBRARY DESTINATION lib)
 
 #Install headers.
-set(HEADER_PATH "sw/redis++")
+set(HEADER_PATH "src/sw/redis++")
 file(GLOB HEADERS "${PROJECT_SOURCE_DIR}/*.h*")
-install(FILES ${HEADERS} DESTINATION ${CMAKE_INSTALL_PREFIX}/include/${HEADER_PATH})
+install(FILES ${HEADERS} DESTINATION ${CMAKE_INSTALL_PREFIX}/${HEADER_PATH})

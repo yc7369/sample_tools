@@ -49,6 +49,8 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin/)
 
 
 # deps
+include_directories(include)
+link_directories(${PROJECT_SOURCE_DIR}/lib)
 add_subdirectory(${CMAKE_SOURCE_DIR}/deps/)
 
 #src
