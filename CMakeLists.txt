@@ -49,7 +49,7 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin/)
 
 
 # deps
-#add_subdirectory(${CMAKE_SOURCE_DIR}/deps/)
+add_subdirectory(${CMAKE_SOURCE_DIR}/deps/)
 
 #src
 add_subdirectory(src)
