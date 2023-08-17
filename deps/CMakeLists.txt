@@ -15,7 +15,7 @@ project(redis)
 set(TOP_DIR ${PROJECT_SOURCE_DIR})
 message("----> top_dir:${TOP_DIR}")
 
-# set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/../lib)
+set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/../lib)
 
 add_subdirectory(hiredis)
 add_subdirectory(redispp)

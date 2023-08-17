@@ -35,7 +35,11 @@
 
 #define SDS_MAX_PREALLOC (1024*1024)
 #ifdef _MSC_VER
+typedef long long ssize_t;
+#define SSIZE_MAX (LLONG_MAX >> 1)
+#ifndef __clang__
 #define __attribute__(x)
+#endif
 #endif
 
 #include <sys/types.h>
@@ -239,7 +243,7 @@ sds sdscatprintf(sds s, const char *fmt, ...);
 
 sds sdscatfmt(sds s, char const *fmt, ...);
 sds sdstrim(sds s, const char *cset);
-void sdsrange(sds s, int start, int end);
+int sdsrange(sds s, ssize_t start, ssize_t end);
 void sdsupdatelen(sds s);
 void sdsclear(sds s);
 int sdscmp(const sds s1, const sds s2);

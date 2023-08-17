@@ -46,12 +46,12 @@ message(STATUS "------------------------------")
 #outputs / bins / libs
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib/)
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin/)
-
+set(TOP_CMAKE_DIR ${CMAKE_SOURCE_DIR})
 
 # deps
 include_directories(include)
 link_directories(${PROJECT_SOURCE_DIR}/lib)
-add_subdirectory(${CMAKE_SOURCE_DIR}/deps/)
+# add_subdirectory(${PROJECT_SOURCE_DIR}/deps/)
 
 #src
 add_subdirectory(src)
