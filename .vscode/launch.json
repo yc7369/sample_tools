@@ -9,7 +9,7 @@
             "name": "test",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/test",
+            "program": "${workspaceFolder}/bin/heapsort",
             "args": [
                 "start"
             ],
