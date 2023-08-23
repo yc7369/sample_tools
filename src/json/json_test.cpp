@@ -3,6 +3,13 @@
 #include "defines.h"
 using namespace nlohmann;
 
+struct  AA
+{
+    static const std::string a;
+};
+
+const std::string AA::a = "dsad";
+
 int main(){
     json doc;
     doc["a"] = "b";
