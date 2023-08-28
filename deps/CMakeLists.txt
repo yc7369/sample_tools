@@ -17,8 +17,12 @@ message("----> top_dir:${TOP_DIR}")
 
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/../lib)
 
-add_subdirectory(hiredis)
-add_subdirectory(redispp)
+add_subdirectory(openssl)
+add_subdirectory(libevent)
+# add_subdirectory(hiredis)
+# add_subdirectory(redispp)
+add_subdirectory(spdlog)
+
 
 # file copy
 # file(<COPY|INSTALL> <files>... DESTINATION )

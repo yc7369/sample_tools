@@ -28,7 +28,7 @@ build_project() {
     make -j20
 }
 
-build_project "deps"
+# build_project "deps"
 echo "----------> copy deps lib ..."
 cd $TOP_DIR/deps
 sh build.sh

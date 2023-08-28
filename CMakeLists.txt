@@ -9,6 +9,10 @@ set(CMAKE_CXX_FLAGS_DEBUG "-O0 -g -ggdb")
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
+if (NOT ${CUSTOM_CMAKE_DIR})
+    set(CUSTOM_CMAKE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/deps/cmake)
+endif()
+include(${CMAKE_CURRENT_SOURCE_DIR}/deps/cmake/common.cmake)
 
 # definitions
 if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
@@ -49,10 +53,44 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin/)
 set(TOP_CMAKE_DIR ${CMAKE_SOURCE_DIR})
 
 # deps
-include_directories(include)
+include_directories(src/include)
 link_directories(${PROJECT_SOURCE_DIR}/lib)
 # add_subdirectory(${PROJECT_SOURCE_DIR}/deps/)
 
+if(NOT MSVC)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/gennerate_file/linux)
+endif()
+
+# base interface
+add_library(infrabase INTERFACE)
+target_include_directories(infrabase
+    INTERFACE
+    ${CMAKE_CURRENT_SOURCE_DIR}/
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/mybase
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/iomn
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/zlog
+    ${CMAKE_CURRENT_SOURCE_DIR}/deps    
+    ${CMAKE_CURRENT_SOURCE_DIR}/deps/spdlog
+    ${CMAKE_CURRENT_SOURCE_DIR}/deps/libevent
+)
+
+
+add_library(libevent INTERFACE)
+target_link_libraries(libevent INTERFACE
+    event_core
+    event_extra
+    event_openssl
+    event_pthreads
+)
+
+target_include_directories(libevent INTERFACE
+    ${CMAKE_CURRENT_SOURCE_DIR}/deps/libevent/include
+)
+
 #src
+add_subdirectory(deps)
 add_subdirectory(src)
 # add_subdirectory(test)
+
+
