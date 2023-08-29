@@ -67,4 +67,12 @@ void setup_log_system(const std::string& dir,
     }
 }
 
+void SlogInit(std::string dir, std::string logger_name, int32_t level) {
+    ztp::setup_log_system(dir, BASE_LOGGER_NAME, level, BASE_LOGGER_NAME, true);
+    spdlog::get(BASE_LOGGER_NAME)->set_pattern("[%Y-%m-%d %H:%M:%S.%e][thread %t][%@,%!][%l] : %v");
+    ztp::setup_log_system(dir, logger_name, level, logger_name, true);
+    spdlog::get(logger_name)
+        ->set_pattern("[%Y-%m-%d %H:%M:%S.%e][thread %t][%@,%!][%l] : %v");
+}
+
 }  // namespace ztp

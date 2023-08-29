@@ -35,6 +35,7 @@ void setup_log_system(const std::string& dir,
                       int loglevel,
                       std::string loggername,
                       bool show_console = false);
+void SlogInit(std::string dir, std::string logger_name, int32_t level);
 
 void shutdown_log_system();
 

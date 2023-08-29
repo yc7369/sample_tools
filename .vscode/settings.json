@@ -66,6 +66,7 @@
         "unordered_set": "cpp",
         "future": "cpp",
         "iomanip": "cpp",
-        "cinttypes": "cpp"
+        "cinttypes": "cpp",
+        "complex": "cpp"
     }
 }

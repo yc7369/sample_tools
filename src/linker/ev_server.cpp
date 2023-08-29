@@ -11,7 +11,14 @@ int main(){
     conn_params.address = "172.17.0.4";
     conn_params.port = "8888";
     s->Start(conn_params);
-    s->start_run_thread();
+    s->Run();
 
+
+    // while (true)
+    // {
+    //     sleep(1);
+    //     /* code */
+    // }
+    
     return 0;
 }
