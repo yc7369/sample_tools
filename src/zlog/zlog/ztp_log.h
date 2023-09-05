@@ -52,13 +52,10 @@ void inline LoG(const char* loggername,
     p->log(level, fmt, std::forward<Args>(args)...);
 }
 
+void SlogInit(std::string dir, std::string logger_name, int32_t level);
+
 }  // namespace ztp
 
-#define ZTPLOG_TRY try
-#define ZTPLOG_CATCH                                           \
-    catch (const spdlog::spdlog_ex& ex) {                      \
-        std::cout << "Log failed: " << ex.what() << std::endl; \
-    }
 
 #define _ZLOG_TRACE(logger, ...) ztp::LoG(logger, spdlog::level::trace, __VA_ARGS__)
 #define _ZLOG_DEBUG(logger, ...) ztp::LoG(logger, spdlog::level::debug, __VA_ARGS__)

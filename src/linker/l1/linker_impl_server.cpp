@@ -1,6 +1,6 @@
 /**
  * @file megate.cpp
- * @author laizhichun (laizhichun@hongkingsystem.cn)
+ * @author yangchen
  * @brief 网关主体
  * @version 0.1
  * @date 2021-01-20
@@ -40,9 +40,9 @@ bool XTcpServer::init(const std::string& host) {
     struct sigaction act;
     act.sa_handler = SIG_IGN;
     if (sigaction(SIGPIPE, &act, NULL) == 0) {
-        BLOG_INFO("SIGPIPE ignore\n");
+        ZLOG_INFO("SIGPIPE ignore\n");
     } else {
-        BLOG_ERROR("SIGPIPE ignore\n");
+        ZLOG_ERROR("SIGPIPE ignore\n");
     }
 #endif
     return true;
@@ -60,7 +60,7 @@ void XTcpServer::OnAccept(bufferevent* bev, evutil_socket_t fd, struct sockaddr*
         inet_ntop(sa->sa_family, &((sockaddr_in6*)sa)->sin6_addr, ip, sizeof(ip));
     }
 
-    BLOG_INFO("Accept {} ip:{} port:{}", (int64_t)bev, ip, port);
+    ZLOG_INFO("Accept {} ip:{} port:{}", (int64_t)bev, ip, port);
     METRIC_GUAGE("connect_count", ++_connect_count);
 }
 
@@ -75,7 +75,7 @@ void XTcpServer::OnEvent(bufferevent* bev, short events) {
         Close(bev);
         METRIC_GUAGE("connect_count", --_connect_count);
 
-        BLOG_INFO("close {}", (int64_t)bev);
+        ZLOG_INFO("close {}", (int64_t)bev);
     } else {
         // std::cout << "OnEvent " << bev << " evs:" << events << std::endl;
     }
@@ -97,7 +97,7 @@ void XTcpServer::OnRead(bufferevent* bev) {
         evbuffer_remove(input, &head, MSG_HEAD_SIZE);
         if (head.version == 1) {
             Close(bev);
-            BLOG_ERROR("version 1 is not support");
+            ZLOG_ERROR("version 1 is not support");
             return;
         }
         char* opts = nullptr;
@@ -118,7 +118,7 @@ void XTcpServer::OnRead(bufferevent* bev) {
             head.optslen = sizeof(OptionRequestId);
             bufferevent_write(bev, &head, MSG_HEAD_SIZE);
             bufferevent_write(bev, &server_time, sizeof(OptionRequestId));
-            BLOG_DEBUG("Recv {} Heatbeat", (int64_t)bev);
+            ZLOG_DEBUG("Recv {} Heatbeat", (int64_t)bev);
         } break;
 
         case kMtSubscribe: {
@@ -127,18 +127,9 @@ void XTcpServer::OnRead(bufferevent* bev) {
 
         } break;
 
-        case kMtMegatePing: {
-            DecodeMsg(PingRequest);
-            head.msgtype = kMtMegatePong;
-            bufferevent_write(bev, &head, MSG_HEAD_SIZE);
-            if (opts != nullptr) {
-                bufferevent_write(bev, opts, head.optslen);
-            }
-            bufferevent_write(bev, &request, sizeof(PingRequest));
-        } break;
 
         default:
-            BLOG_ERROR("UNKnow Msg {} Type datalen : {},msgtype {}",
+            ZLOG_ERROR("UNKnow Msg {} Type datalen : {},msgtype {}",
                        (int64_t)bev,
                        head.datalen,
                        head.msgtype);

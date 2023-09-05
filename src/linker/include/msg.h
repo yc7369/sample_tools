@@ -41,25 +41,6 @@ enum SDSMsgType {
 };
 
 
-// 登录请求
-struct LoginRequest {
-    char acc[16];  // 账户名称
-    char pwd[24];  // 密码
-    char mac[24];  // mac地址
-};
-
-// 登录回报,未登录回报
-struct LoginAns {
-    int8_t ret;  // 0 成功，其他失败
-};
-
-struct PingRequest {
-    int64_t time_stamp;  // 客户端发过来的时间戳
-};
-
-struct PingAns {
-    int64_t time_stamp;  // 客户端发过来的时间戳,原样返回
-};
 };
 
 #pragma pack(pop)

@@ -12,13 +12,6 @@ int main(){
     conn_params.port = "8888";
     s->Start(conn_params);
     s->Run();
-
-
-    // while (true)
-    // {
-    //     sleep(1);
-    //     /* code */
-    // }
     
     return 0;
 }

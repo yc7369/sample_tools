@@ -1,40 +1,83 @@
-#include<string>
 #include <iostream>
+#include <string>
+#include <unordered_map>
+// 基础咖啡类（被装饰的类）
+class Coffee {
+public:
+    virtual std::string getDescription() const {
+        return "Basic Coffee";
+    }
 
-using namespace std;
-void* operator new(std::size_t count) {
-    cout << "分配堆内存" << count << "字节" << endl;
-    return malloc(count);
-}
-void operator delete(void* p) {
-    cout << "释放堆内存" << p << endl;
-    free(p);
-}
-void show_str(const string& str) {
-    cout << endl;
-    cout << __func__ << "() 临时变量初始化" << endl;
-    string tmp = str;
-    printf("str的副本地址: %p\n", str.c_str());
-    printf("tmp的副本地址: %p\n", tmp.c_str());
-}
+    virtual double cost() const {
+        return 1.0;
+    }
+};
 
+// 调料装饰器类
+class CoffeeDecorator : public Coffee {
+protected:
+    Coffee* coffee;
+
+public:
+    CoffeeDecorator(Coffee* coffee) : coffee(coffee) {}
+
+    std::string getDescription() const override {
+        return coffee->getDescription();
+    }
+
+    double cost() const override {
+        return coffee->cost();
+    }
+};
+
+// 具体的调料装饰器类
+class MilkDecorator : public CoffeeDecorator {
+public:
+    MilkDecorator(Coffee* coffee) : CoffeeDecorator(coffee) {}
+
+    std::string getDescription() const override {
+        return coffee->getDescription() + ", Milk";
+    }
+
+    double cost() const override {
+        return coffee->cost() + 0.5;
+    }
+};
+
+class SugarDecorator : public CoffeeDecorator {
+public:
+    SugarDecorator(Coffee* coffee) : CoffeeDecorator(coffee) {}
+
+    std::string getDescription() const override {
+        return coffee->getDescription() + ", Sugar";
+    }
+
+    double cost() const override {
+        return coffee->cost() + 0.2;
+    }
+};
+
+struct AA{
+    int aa;
+};
 int main() {
-    // cout << endl;
-    // cout << "-------初始化string对象-------" << endl;
-    // string you = "Hello World!";
-    // cout << endl;
-    // cout << "-------show_str-------" << endl;
-    // printf("main函数: you副本中的字符串地址: %p\n", you.c_str());
-    // show_str(you);
-    // cout << endl;
+    // Coffee* basicCoffee = new Coffee();
+    // Coffee* milkCoffee = new MilkDecorator(basicCoffee);
+    // Coffee* milkSugarCoffee = new SugarDecorator(milkCoffee);
 
-    cout << "字符串字面量直接传参方式" << endl;
-    show_str("Hello World!");
-    cout << endl;
-    cout << "字符数组传参方式" << endl;
-    const char mes[] = "Hello World!";
-    printf("main函数: mes副本中的字符串地址: %p\n", mes);
-    show_str(mes);
-    cout << endl;
+    // std::cout << "Description: " << milkSugarCoffee->getDescription() << std::endl;
+    // std::cout << "Cost: $" << milkSugarCoffee->cost() << std::endl;
+
+    // delete basicCoffee;
+    // delete milkCoffee;
+    // delete milkSugarCoffee;
+
+    std::unordered_map<int, AA*> m;
+    AA *a1 = new AA;
+    a1->aa = 1;
+    m.insert({a1->aa, a1});
+    m.insert({a1->aa, a1});
+
+    std::cout<<m.size()<<std::endl;
     return 0;
-} /*Hello World!Hello World!Hello World!*/
+}

@@ -61,18 +61,13 @@ void setup_log_system(const std::string& dir,
                                                    spdlog::thread_pool(),
                                                    spdlog::async_overflow_policy::block);
         combined_logger->set_level(spdlog::level::level_enum(loglevel));
+        combined_logger->set_pattern("[%Y-%m-%d %H:%M:%S.%e][thread %t][%@,%!][%l] : %v");
         spdlog::register_logger(combined_logger);
+
     } catch (const spdlog::spdlog_ex& e) {
         std::cerr << e.what() << '\n';
     }
 }
 
-void SlogInit(std::string dir, std::string logger_name, int32_t level) {
-    ztp::setup_log_system(dir, BASE_LOGGER_NAME, level, BASE_LOGGER_NAME, true);
-    spdlog::get(BASE_LOGGER_NAME)->set_pattern("[%Y-%m-%d %H:%M:%S.%e][thread %t][%@,%!][%l] : %v");
-    ztp::setup_log_system(dir, logger_name, level, logger_name, true);
-    spdlog::get(logger_name)
-        ->set_pattern("[%Y-%m-%d %H:%M:%S.%e][thread %t][%@,%!][%l] : %v");
-}
-
 }  // namespace ztp
+

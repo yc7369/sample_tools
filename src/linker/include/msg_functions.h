@@ -9,7 +9,7 @@ namespace linker {
 #define DecodeMsg(type)                                                                        \
     type request;                                                                              \
     if (head.datalen != sizeof(type)) {                                                        \
-        BLOG_ERROR("{} sizeof " #type "({}) != {}", (int64_t)bev, sizeof(type), head.datalen); \
+        ZLOG_ERROR("{} sizeof " #type "({}) != {}", (int64_t)bev, sizeof(type), head.datalen); \
         evbuffer_drain(input, head.datalen);                                                   \
         break;                                                                                 \
     }                                                                                          \

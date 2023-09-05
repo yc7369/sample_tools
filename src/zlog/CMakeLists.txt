@@ -2,9 +2,9 @@
 project(zlog)
 
 
-set(BLOG_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/src/ztp_log.cc)
+set(ZLOG_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/src/ztp_log.cc)
 
-add_library(zlog STATIC  ${BLOG_SOURCE})
+add_library(zlog STATIC  ${ZLOG_SOURCE})
 
 if(MSVC)
     target_link_libraries(zlog PUBLIC  infrabase spdlog)

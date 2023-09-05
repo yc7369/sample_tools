@@ -2,13 +2,23 @@ project(linker)
 
 # aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/src SRC_FILES)
 # aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/include INC_FILES)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-add_library(linker linker_impl_server.cpp)
-target_link_libraries(linker PUBLIC  tcp mybase iomn)
-
-target_include_directories(linker PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/linker/  ${CMAKE_CURRENT_SOURCE_DIR}/../mybase/)
-target_include_directories(linker INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/) 
+# add_library(linker l1/linker_impl_server.cpp)
+# target_link_libraries(linker PUBLIC  tcp mybase iomn
 
 
-add_executable(s_test ev_server.cpp)
-target_link_libraries(s_test linker)
+# add_executable(l1_server l1/ev_server.cpp)
+# target_link_libraries(l1_server linker)
+
+aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/l1 l1_SRC_FILES)
+add_executable(l1_server ${l1_SRC_FILES})
+target_link_libraries(l1_server tcp mybase)
+
+aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/l2 l2_SRC_FILES)
+add_executable(l2_server ${l2_SRC_FILES})
+target_link_libraries(l2_server tcp mybase zlog)
+
+aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/c1 c1_SRC_FILES)
+add_executable(l1_client ${c1_SRC_FILES})
+target_link_libraries(l1_client tcp mybase)
