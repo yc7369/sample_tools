@@ -1,5 +1,5 @@
 /*************************************************************
-// Created by zhujinhua on 7/25/20.
+// Created by yangchen on 7/25/20.
 
 File Name：文件名称
 Function List：函数功能列表，多列注释
@@ -14,11 +14,11 @@ Class：功能描述
 #define LH_FRAMEWORK_REDIS_MNG_H
 
 #include "redis/redis++.h"
-#include "singleton.h"
+#include "utils/singleton.h"
 #include <atomic>
 #include <queue>
 using namespace sw::redis;
-
+namespace lhserver {
 // redis哨兵配置
 typedef struct {
     std::string host;    //主机地址
@@ -63,8 +63,9 @@ struct RedisPool {
     std::list<RealRedisPtr> redis_queue;  // redis连接队列
 };
 typedef std::shared_ptr<RedisPool> RedisPoolPtr;
+
 // redis连接池管理类
-class RedisMng : public Singleton<RedisMng> {
+class  RedisMng : public Singleton<RedisMng> {
    public:
     /**
      * @brief 初始化连接池
@@ -128,7 +129,7 @@ class RedisMng : public Singleton<RedisMng> {
 };
 
 // redis连接池代理类
-class RedisMngProxy {
+class  RedisMngProxy {
    public:
     /**
      * @brief构造函数
@@ -204,4 +205,5 @@ private:
     RedisPtr ptr_ = nullptr;
 };
 
-#endif //FRAMEWORK_REDIS_MNG_H
+}  // namespace lhserver
+#endif //LH_FRAMEWORK_REDIS_MNG_H

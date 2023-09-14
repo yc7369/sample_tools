@@ -11,7 +11,6 @@ Class：功能描述
 **************************************************************/
 
 #include "redis_mng.h"
-#include "qtp_log.h"
 
 void RedisMng::Init(SentinelConfigArray sentinel_configs, RedisConfigPtr redis_config) {
     sentinel_configs_ = sentinel_configs;
@@ -45,7 +44,7 @@ void RedisMng::Init(SentinelConfigArray sentinel_configs, RedisConfigPtr redis_c
 RedisPtr RedisMng::GetRedis2(bool master, int db) {
     int idx = (-1 == db) ? redis_config_->db : db;
     if (idx > 16 || idx < 0) {
-        HK_GLOG_WARN << "error redis idx:" << idx;
+        std::cout << "error redis idx:" << idx;
         return nullptr;
     }
     RedisPtr redis = nullptr;
@@ -70,7 +69,7 @@ RedisPtr RedisMng::GetRedis2(bool master, int db) {
     }
     if (redisPool->totalsize >= redis_config_->pool_size * 5) {
 
-        HK_GLOG_WARN << "no idle connection,idx:" << idx << ",totalsize:" << redisPool->totalsize
+        std::cout << "no idle connection,idx:" << idx << ",totalsize:" << redisPool->totalsize
                      << ",usesize:" << redisPool->usesize << ",idlesize:" << redisPool->idlesize
                      << ",maxsize:" << redis_config_->pool_size * 5
                      << ",queue size:" << redis_queue.size();
@@ -104,7 +103,7 @@ RedisPtr RedisMng::GetRedis(bool master, int db) {
     }
     int idx = (-1 == db) ? redis_config_->db : db;
     if (idx > 16 || idx < 0) {
-        HK_GLOG_WARN << "error redis idx:" << idx;
+        std::cout << "error redis idx:" << idx;
         return nullptr;
     }
     RedisPtr redis = nullptr;
@@ -129,7 +128,7 @@ RedisPtr RedisMng::GetRedis(bool master, int db) {
     }
     if (redisPool->totalsize >= redis_config_->pool_size * 5) {
 
-        HK_GLOG_WARN << "no idle connection,idx:" << idx << ",totalsize:" << redisPool->totalsize
+        std::cout << "no idle connection,idx:" << idx << ",totalsize:" << redisPool->totalsize
                      << ",usesize:" << redisPool->usesize << ",idlesize:" << redisPool->idlesize
                      << ",maxsize:" << redis_config_->pool_size * 5
                      << ",queue size:" << redis_queue.size();
@@ -161,7 +160,7 @@ RedisPtr RedisMng::GetRedis(bool master, int db) {
 int RedisMng::GiveBack(RedisPtr redis, bool master, bool isvalid, int db) {
     int idx = (-1 == db) ? redis_config_->db : db;
     if (idx > 16 || idx < 0) {
-        HK_GLOG_WARN << "error redis idx:" << idx;
+        std::cout << "error redis idx:" << idx;
         return -1;
     }
     if (!isvalid) {

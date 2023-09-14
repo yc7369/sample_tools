@@ -18,6 +18,7 @@ deps 可选的编译依赖库(源码)
     spdlog    
 thirdlib 第三方库的一些安装源码包
 
+
 # 外层文件说明
-.gitlab-ci.yml 配置git ci自动化编译发布配置（这里可用作参考，未在该项目中生效）
+.gitlab-ci.yml 配置git ci自动化编译发布配置,发布通过tag触发（这里可用作参考，未在该项目中生效）
 

@@ -1,24 +1,13 @@
-/**
- * @file megate.h
- * @author yangchen (yangchen@hongkingsystem.cn)
- * @brief megate 主体
- * @version 0.1
- * @date 2021-01-20
- *
- * @copyright Copyright (c) 2021
- *
- */
 #ifndef LINKER_H
 #define LINKER_H
 #include "tcp/event_server.h"
-#include <unordered_map>
 #include <memory>
-#include <thread>
 #include <mutex>
-
+#include <thread>
+#include <unordered_map>
 
 namespace linker {
-class XTcpServer : public tcp::EventServer{
+class XTcpServer : public tcp::EventServer {
 public:
     /**
      * @brief Construct a new Megate object
@@ -68,7 +57,7 @@ private:
     std::atomic_bool sub_pub_man_update_ = false;
     std::mutex sub_pub_man_mutex_;
 
-    std::string config_;    //172.24.16.139:8888
+    std::string config_;  // 172.24.16.139:8888
     std::shared_ptr<std::thread> run_thread_;
     std::shared_ptr<std::thread> pub_thread_;
 };

@@ -1,6 +1,6 @@
 /**
  * @file signal_server.cpp
- * @author yangdian (yangdian@hongkingsystem.cn)
+ * @author yangdian (yangdian)
  * @brief 信号服务主体
  * @version 0.1
  * @date 2021-01-20

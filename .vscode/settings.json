@@ -68,5 +68,8 @@
         "iomanip": "cpp",
         "cinttypes": "cpp",
         "complex": "cpp"
-    }
+    },
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": false,
+    "editor.formatOnType": false,
 }

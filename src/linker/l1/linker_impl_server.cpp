@@ -1,13 +1,3 @@
-/**
- * @file megate.cpp
- * @author yangchen
- * @brief 网关主体
- * @version 0.1
- * @date 2021-01-20
- *
- * @copyright Copyright (c) 2021
- *
- */
 #include "linker_impl_server.h"
 
 #ifndef _MSC_VER
@@ -67,11 +57,6 @@ void XTcpServer::OnAccept(bufferevent* bev, evutil_socket_t fd, struct sockaddr*
 void XTcpServer::OnEvent(bufferevent* bev, short events) {
     if (events & BEV_EVENT_EOF || events & BEV_EVENT_ERROR || events & BEV_EVENT_READING ||
         events & BEV_EVENT_WRITING) {
-        // std::lock_guard<std::mutex> lock(sub_pub_man_mutex_);
-        // sub_pub_man_update_ = true;
-        // for (auto& topic_sub : sub_pub_man_) {
-        //     topic_sub.second.erase(bev);
-        // }
         Close(bev);
         METRIC_GUAGE("connect_count", --_connect_count);
 

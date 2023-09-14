@@ -3,7 +3,7 @@
 using namespace linker;
 using namespace tcp;
 
-int main(){
+int main() {
     auto s = std::make_shared<XTcpServer>();
     s->init("{}");
 
@@ -12,6 +12,6 @@ int main(){
     conn_params.port = "8888";
     s->Start(conn_params);
     s->Run();
-    
+
     return 0;
 }

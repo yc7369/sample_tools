@@ -53,7 +53,7 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin/)
 set(TOP_CMAKE_DIR ${CMAKE_SOURCE_DIR})
 
 # deps
-include_directories(src/include)
+include_directories(src/include src/)
 link_directories(${PROJECT_SOURCE_DIR}/lib)
 # add_subdirectory(${PROJECT_SOURCE_DIR}/deps/)
 
@@ -91,6 +91,5 @@ target_include_directories(libevent INTERFACE
 #src
 add_subdirectory(deps)
 add_subdirectory(src)
-# add_subdirectory(test)
 
 

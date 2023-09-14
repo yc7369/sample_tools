@@ -10,16 +10,15 @@
  */
 
 #include "event_wrapper.h"
-#include "zlog/ztp_log.h"
-#include "event2/event.h"
+#include "event2/buffer.h"
 #include "event2/bufferevent.h"
 #include "event2/bufferevent_ssl.h"
-#include "event2/buffer.h"
-#include "qtp_msg.h"
 #include "event2/event.h"
 #include "event2/thread.h"
-#include "openssl/ssl.h"
 #include "openssl/err.h"
+#include "openssl/ssl.h"
+#include "qtp_msg.h"
+#include "zlog/ztp_log.h"
 
 namespace tcp {
 

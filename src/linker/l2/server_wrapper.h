@@ -1,6 +1,6 @@
 /**
  * @file server_wrapper.h
- * @author wangjianling (wangjianling@hongkingsystem.cn)
+ * @author wangjianling (wangjianling)
  * @brief 封装服务端
  * @version 0.1
  * @date 2023-2-18
