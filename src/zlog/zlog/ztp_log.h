@@ -5,10 +5,14 @@
 #ifndef ZTP_ZTP_LOG_H
 #define ZTP_ZTP_LOG_H
 
+#ifdef SPDLOG_ACTIVE_LEVEL
+#undef SPDLOG_ACTIVE_LEVEL
+#endif
+#define SPDLOG_ACTIVE_LEVEL SPDLOG_LOGGER_TRACE
+#include "spdlog/spdlog.h"
 #include <iostream>
 #include <memory>
 #include <string>
-#include "spdlog/spdlog.h"
 
 #ifndef ZTPLOG_DEF_H
 #define ZTPLOG_DEF_H
@@ -55,7 +59,6 @@ void inline LoG(const char* loggername,
 void SlogInit(std::string dir, std::string logger_name, int32_t level);
 
 }  // namespace ztp
-
 
 #define _ZLOG_TRACE(logger, ...) ztp::LoG(logger, spdlog::level::trace, __VA_ARGS__)
 #define _ZLOG_DEBUG(logger, ...) ztp::LoG(logger, spdlog::level::debug, __VA_ARGS__)
