@@ -7,6 +7,6 @@
     },
     "base": {
         "log_level": 2,
-        "log_dir": "./logs",
+        "log_dir": "./logs"
     }
 }
