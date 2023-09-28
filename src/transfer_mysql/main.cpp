@@ -170,10 +170,10 @@ bool ReadConfig(const std::string& file, ConfigOpt opts) {
                             (std::istreambuf_iterator<char>()));
         cfg = json::parse(content);
     } catch (const std::exception& e) {
-        BSLOG_ERROR("parse config failed, {}", e.what());
+        std::cout << "parse config failed, {}" << e.what();
         exit(-1);
     }
-    BSLOG_INFO("config file parse success. cfg:{}", cfg.dump());
+    std::cout << "config file parse success. cfg:{}" << cfg.dump();
 
     if (cfg.contains(MYSQL_SECTION)) {
         json mysql = cfg[MYSQL_SECTION];

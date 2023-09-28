@@ -3,8 +3,7 @@
     // 悬停以查看现有属性的描述。
     // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
-    "configurations": [  
-
+    "configurations": [
         {
             "name": "test",
             "type": "cppdbg",
@@ -133,6 +132,32 @@
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/",
+            "environment": [
+                {
+                    "name": "LD_LIBRARY_PATH",
+                    "value": "$LD_LIBRARY_PATH:./"
+                }
+            ],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "transfer_mysql",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/transfer_mysql",
+            "args": [
+                ""
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/bin",
             "environment": [
                 {
                     "name": "LD_LIBRARY_PATH",
