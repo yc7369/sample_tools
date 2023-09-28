@@ -18,6 +18,7 @@ target_link_libraries(transfer_mysql PRIVATE
         zlog
         dl
         pthread
+        mybase
         mysqlcppconn-static
         mysqlclient
         ${SSL_LIB}

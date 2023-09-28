@@ -1,24 +1,21 @@
 #include "concurrentqueue.h"
+#include "config_api.h"
 #include "cppconn/driver.h"
 #include "cppconn/exception.h"
 #include "cppconn/metadata.h"
 #include "cppconn/prepared_statement.h"
 #include "cppconn/statement.h"
+#include "json.hpp"
+#include "mybase/timerman.h"
 #include "mysql_connection.h"
 #include "mysql_driver.h"
 #include "slog.h"
 #include "util.h"
 #include <chrono>
+#include <fstream>
 #include <thread>
 
 #define MYSQL_SECTION "mysql"
-
-struct MysqlInfo {
-    std::string url_;        // 数据库ip地址
-    std::string user_;       // 数据库用户名
-    std::string pass_;       // 数据库密码
-    std::string data_base_;  // 数据库名字
-};
 
 class DBWorkHandle {
 public:
@@ -164,23 +161,55 @@ private:
     moodycamel::ConcurrentQueue<std::string> q;
 };
 
+bool ReadConfig(const std::string& file, ConfigOpt opts) {
+    using namespace nlohmann;
+    json cfg;
+    try {
+        std::ifstream ifs(file);
+        std::string content((std::istreambuf_iterator<char>(ifs)),
+                            (std::istreambuf_iterator<char>()));
+        cfg = json::parse(content);
+    } catch (const std::exception& e) {
+        BSLOG_ERROR("parse config failed, {}", e.what());
+        exit(-1);
+    }
+    BSLOG_INFO("config file parse success. cfg:{}", cfg.dump());
+
+    if (cfg.contains(MYSQL_SECTION)) {
+        json mysql = cfg[MYSQL_SECTION];
+        opts.dbinfo_.url_ = mysql["host"];
+        opts.dbinfo_.user_ = mysql["account"];
+        opts.dbinfo_.pass_ = mysql["password"];
+        opts.dbinfo_.data_base_ = mysql["database"];
+    }
+    if (cfg.contains("base")) {
+        json base = cfg["base"];
+        // 日志配置
+        opts.base_.log_dir = base["log_dir"];
+        opts.base_.log_level = base["log_level"];
+    }
+
+    return true;
+}
+
 int main(int argc, char** argv) {
 
-    MysqlInfo dbinfo;
+    std::string filename = "config.json";
+    ConfigOpt opts;
+    ReadConfig(filename, opts);
 
-    // dbinfo.url_ = ini.Get(MYSQL_SECTION, "host", "tcp://172.24.13.178:3306");
-    // dbinfo.user_ = ini.Get(MYSQL_SECTION, "account", "chronos");
-    // dbinfo.pass_ = ini.Get(MYSQL_SECTION, "password", "chronos");
-    // dbinfo.data_base_ = ini.Get(MYSQL_SECTION, "database", "yctest");
-    // SlogInit(opt.log_dir, opt.log_level);
+    SlogInit(opts.base_.log_dir, opts.base_.log_level);
 
-    // BSLOG_INFO("server start!");
+    BSLOG_INFO("server start!");
 
-    // mybase::TimerMan::instance()->run();
-    // auto dbw = std::make_shared<DBWorkHandle>();
-    // if (!dbw->Init(dbinfo)) {
-    //     return -1;
-    // }
+    mybase::TimerMan::instance()->run();
+    auto dbw = std::make_shared<DBWorkHandle>();
+    if (!dbw->Init(opts.dbinfo_)) {
+        return -1;
+    }
 
+    while (true) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+    }
     return 0;
 }
