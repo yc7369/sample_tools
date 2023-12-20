@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string>
+// #include <string>
 #include <unordered_map>
 // 基础咖啡类（被装饰的类）
 class Coffee {
@@ -57,9 +57,6 @@ public:
     }
 };
 
-struct AA{
-    int aa;
-};
 int main() {
     // Coffee* basicCoffee = new Coffee();
     // Coffee* milkCoffee = new MilkDecorator(basicCoffee);
@@ -72,12 +69,5 @@ int main() {
     // delete milkCoffee;
     // delete milkSugarCoffee;
 
-    std::unordered_map<int, AA*> m;
-    AA *a1 = new AA;
-    a1->aa = 1;
-    m.insert({a1->aa, a1});
-    m.insert({a1->aa, a1});
-
-    std::cout<<m.size()<<std::endl;
     return 0;
 }

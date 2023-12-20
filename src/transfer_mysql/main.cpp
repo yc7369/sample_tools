@@ -29,12 +29,6 @@ public:
     }
 
     void DisConnect(bool destroy = false) {
-        if (stat_) {
-            stat_->close();
-            delete stat_;
-            stat_ = nullptr;
-        }
-
         if (conn_) {
             conn_->close();
             delete conn_;
@@ -57,12 +51,6 @@ public:
                 return false;
             }
             conn_->setSchema(dbinfo_.data_base_.c_str());
-
-            auto stmt = conn_->createStatement();
-            if (stmt == NULL) {
-                BSLOG_ERROR("stmt is null");
-                return false;
-            }
         } catch (sql::SQLException& e) {
             BSLOG_ERROR("Connected to  database failed, sql errcode:{},error_msg:{}",
                         e.getErrorCode(),
@@ -105,9 +93,11 @@ public:
                 if (conn_ && conn_->isValid()) {
                     if (++count > 1000) {
                         count = 0;
-                        auto stmt = conn_->prepareStatement("select 1 = 1;");
+                        auto stmt = std::shared_ptr<sql::PreparedStatement>(
+                            conn_->prepareStatement("select 1 = 1;"));
                         if (stmt) {
-                            stmt->executeQuery();
+                            // 这里会自动释放rs
+                            auto rs = std::shared_ptr<sql::ResultSet>(stmt->executeQuery());
                         }
                     }
                 } else {
@@ -131,7 +121,8 @@ public:
                         continue;
                     }
 
-                    auto stmt = conn_->prepareStatement(sql);
+                    auto stmt =
+                        std::shared_ptr<sql::PreparedStatement>(conn_->prepareStatement(sql));
                     if (stmt) {
                         stmt->executeUpdate();
                     }
@@ -152,7 +143,6 @@ private:
     bool exit_ = false;
     std::thread check_thread_;
     std::thread update_thread_;
-    sql::Statement* stat_;
     sql::Connection* conn_;
     sql::mysql::MySQL_Driver* driver_;
 
