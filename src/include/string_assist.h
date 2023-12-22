@@ -1,6 +1,6 @@
 #pragma once
-#include <string>
 #include <algorithm>
+#include <string>
 #include <vector>
 
 namespace util {
@@ -58,6 +58,25 @@ public:
         // c++ 14/17 copy elision
         return ret;
         // return std::move(ret);
+    }
+
+    // trim
+    // ltrim, rtrim, trim
+    static std::string& ltrim(std::string& str) {
+        str.erase(
+            str.begin(),
+            std::find_if(str.begin(), str.end(), std::not1(std::ptr_fun<int, int>(std::isspace))));
+        return str;
+    }
+    static std::string& rtrim(std::string& str) {
+        str.erase(
+            std::find_if(str.rbegin(), str.rend(), std::not1(std::ptr_fun<int, int>(std::isspace)))
+                .base(),
+            str.end());
+        return str;
+    }
+    static std::string& trim(std::string& str) {
+        return ltrim(rtrim(str));
     }
 };
 

@@ -1,5 +1,5 @@
 /*************************************************************
-// Created by zhujinhua on 7/25/20.
+// Created by yangchen on 7/25/20.
 
 File Name：文件名称
 Function List：函数功能列表，多列注释
@@ -21,9 +21,9 @@ using namespace sw::redis;
 
 // redis哨兵配置
 typedef struct {
-    std::string host;    //主机地址
-    int port;            //主机端口
-    std::string passwd;  //密码
+    std::string host;    // 主机地址
+    int port;            // 主机端口
+    std::string passwd;  // 密码
 } SentinelConfig;
 typedef std::shared_ptr<SentinelConfig> SentinelConfigPtr;
 
@@ -33,39 +33,39 @@ using SentinelConfigArray = std::vector<SentinelConfigPtr>;
 
 // redis配置
 typedef struct {
-    //如果不使用哨兵，则需使用
-    std::string host;    //主机地址
-    int port;            //主机端口
+    // 如果不使用哨兵，则需使用
+    std::string host;  // 主机地址
+    int port;          // 主机端口
 
-    //以下字段是必须配置
-    std::string passwd;       //密码
-    std::string master_name;  //主库名称
-    int db;                   //默认的数据库实例id
-    int connect_timeout;      //连接超时时间 毫秒
-    int socket_timeout;       //请求超时时间 毫秒
-    int pool_size;            //连接池大小
+    // 以下字段是必须配置
+    std::string passwd;       // 密码
+    std::string master_name;  // 主库名称
+    int db;                   // 默认的数据库实例id
+    int connect_timeout;      // 连接超时时间 毫秒
+    int socket_timeout;       // 请求超时时间 毫秒
+    int pool_size;            // 连接池大小
 } RedisConfig;
 typedef std::shared_ptr<RedisConfig> RedisConfigPtr;
 typedef std::shared_ptr<Redis> RedisPtr;
 typedef struct {
     bool master;
     RedisPtr redis;
-}RealRedis;
+} RealRedis;
 typedef std::shared_ptr<RealRedis> RealRedisPtr;
 typedef std::shared_ptr<Sentinel> SentinelPtr;
 
 // redis连接池配置
 struct RedisPool {
-    int totalsize;                     //当前总的连接数
-    int usesize;                       //已经使用的连接数
-    int idlesize;                      //闲置的连接数
-    std::mutex mtx;                    //连接池锁
+    int totalsize;                        // 当前总的连接数
+    int usesize;                          // 已经使用的连接数
+    int idlesize;                         // 闲置的连接数
+    std::mutex mtx;                       // 连接池锁
     std::list<RealRedisPtr> redis_queue;  // redis连接队列
 };
 typedef std::shared_ptr<RedisPool> RedisPoolPtr;
 // redis连接池管理类
 class RedisMng : public Singleton<RedisMng> {
-   public:
+public:
     /**
      * @brief 初始化连接池
      *
@@ -99,7 +99,7 @@ class RedisMng : public Singleton<RedisMng> {
      */
     int GiveBack(RedisPtr redis, bool master, bool isvalid = true, int db = -1);
 
-   private:
+private:
     /**
      * @brief 获取一个有效的redis连接,这里针对直连redis
      *
@@ -129,7 +129,7 @@ class RedisMng : public Singleton<RedisMng> {
 
 // redis连接池代理类
 class RedisMngProxy {
-   public:
+public:
     /**
      * @brief构造函数
      *
@@ -172,31 +172,32 @@ class RedisMngProxy {
     bool operator!=(const RedisMngProxy& v) const;
 
     /**
-    * @brief 重载 == 
-    *
-    * @param[in] 
-    * @param[out] 
-    * @return 等于v返回true 不等于v返回false
-    */
+     * @brief 重载 ==
+     *
+     * @param[in]
+     * @param[out]
+     * @return 等于v返回true 不等于v返回false
+     */
     bool operator==(const RedisMngProxy& v) const;
 
     /**
-    * @brief 重载 ==  判空
-    *
-    * @param[in] 
-    * @param[out] 
-    * @return 等于nullptr返回true，不等于nullptr返回false
-    */
+     * @brief 重载 ==  判空
+     *
+     * @param[in]
+     * @param[out]
+     * @return 等于nullptr返回true，不等于nullptr返回false
+     */
     bool operator==(nullptr_t) const;
 
     /**
-    * @brief 重载 !=  判空
-    *
-    * @param[in] 
-    * @param[out] 
-    * @return 不等于nullptr返回true，等于nullptr返回false
-    */
+     * @brief 重载 !=  判空
+     *
+     * @param[in]
+     * @param[out]
+     * @return 不等于nullptr返回true，等于nullptr返回false
+     */
     bool operator!=(nullptr_t) const;
+
 private:
     bool isvalid_;
     bool master_;
@@ -204,4 +205,4 @@ private:
     RedisPtr ptr_ = nullptr;
 };
 
-#endif //FRAMEWORK_REDIS_MNG_H
+#endif  // FRAMEWORK_REDIS_MNG_H
