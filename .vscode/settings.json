@@ -67,7 +67,8 @@
         "future": "cpp",
         "iomanip": "cpp",
         "cinttypes": "cpp",
-        "complex": "cpp"
+        "complex": "cpp",
+        "buildinf.h": "c"
     },
     "editor.formatOnSave": true,
     "editor.formatOnPaste": false,

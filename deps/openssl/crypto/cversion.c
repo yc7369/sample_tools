@@ -9,7 +9,11 @@
 
 #include "internal/cryptlib.h"
 
-#include "buildinf.h"
+// #include "buildinf.h"
+#define CFLAGS "compiler: GNU "
+#define PLATFORM "platform: Linux"
+#define DATE "built on: 2023-08-28 06:09:16 UTC"
+static const char *compiler_flags = CFLAGS;
 
 unsigned long OpenSSL_version_num(void)
 {
