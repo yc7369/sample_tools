@@ -149,10 +149,10 @@
             ]
         },
         {
-            "name": "transfer_mysql",
+            "name": "use_mysql",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/transfer_mysql",
+            "program": "${workspaceFolder}/bin/use_mysql",
             "args": [
                 ""
             ],
