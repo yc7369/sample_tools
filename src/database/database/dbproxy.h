@@ -3,9 +3,9 @@
  * @Brief: 数据库接口封装类
  * @Version: 1.0
  * @Date: 2020-10-26 19:31:16
- * @Author: yangchen@hongkingsystem.cn
+ * @Author: yangchen
  * @Copyright: Copyright (c) 2021 LeHighHongKing All rights reserved.
- * @LastEditors: yangchen@hongkingsystem.cn
+ * @LastEditors: yangchen
  * @LastEditTime: 2021-10-11 11:27:37
  */
 
@@ -52,7 +52,7 @@ public:
 
     /**
      * @brief: 执行数据库操作（insert、delete、update）
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in] sql 数据库执行语句
      * @param[in] index 数据库编号，DBConnConfig::index 确定，非负整数固定且有序（预留）
      * @param[out] ret_code 返回错误码
@@ -62,7 +62,7 @@ public:
 
     /**
      * @brief: 数据库预处理
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in] sql 数据库执行语句
      * @param[in] index 数据库编号，DBConnConfig::index 确定，非负整数固定且有序（预留）
      * @param[out] ret_code 返回错误码
@@ -73,7 +73,7 @@ public:
 
     /**
      * @brief: 数据库查询
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in] sql 数据库查询语句
      * @param[in] index 数据库编号，DBConnConfig::index 确定，非负整数固定且有序（预留）
      * @param[out] ret_code 返回错误码
@@ -85,7 +85,7 @@ public:
 private:
     /**
      * @brief: 获取一个空闲的db连接
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in] times 尝试次数（获取数据库连接失败的时候重新尝试获取连接的次数，默认三次）
      * @param[out] 无
      * @return DB连接
@@ -94,7 +94,7 @@ private:
 
     /**
      * @brief: 检验sql语句是否为type类型
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in] strsql 需要校验的sql语句
      * @param[in] type 需要校验的sql语句的类型，参考SQL_OPER_TYPE
      * @param[out] 无

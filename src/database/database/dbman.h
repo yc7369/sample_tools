@@ -3,9 +3,9 @@
  * @Brief: 数据库连接池管理类
  * @Version: 1.0
  * @Date: 2020-06-06 10:34:50
- * @Author: yangchen@hongkingsystem.cn
+ * @Author: yangchen
  * @Copyright: Copyright (c) 2021 LeHighHongKing All rights reserved.
- * @LastEditors: yangchen@hongkingsystem.cn
+ * @LastEditors: yangchen
  * @LastEditTime: 2021-10-13 16:49:07
  */
 
@@ -45,7 +45,7 @@ public:
 
     /**
      * @brief: 通过配置文件初始化数据库连接池
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in] config : 数据库配置列表
      * @param[out]
      * @return true成功或false失败
@@ -54,7 +54,7 @@ public:
 
     /**
      * @brief: 释放连接池
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in]
      * @param[out]
      * @return
@@ -63,7 +63,7 @@ public:
 
     /**
      * @brief: 从连接池中获取一个BaseDBPtr对象
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in]
      * @param[out]
      * @return 空闲的数据库连接对象
@@ -72,7 +72,7 @@ public:
 
     /**
      * @brief: 返回BaseDBPtr对象给连接池
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in] 数据库连接对象
      * @param[out]
      * @return
@@ -82,7 +82,7 @@ public:
 private:
     /**
      * @brief: 切换数据库（主库与备库切换）
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in]
      * @param[out]
      * @return
@@ -91,7 +91,7 @@ private:
 
     /**
      * @brief: 初始化数据库
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in] driverName 数据库驱动
      * @param[in] addr 地址
      * @param[in] user 用户名
@@ -112,7 +112,7 @@ private:
 
     /**
      * @brief: 初始化数据库
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in] driverName 数据库驱动
      * @param[in] addr 地址
      * @param[in] user 用户名

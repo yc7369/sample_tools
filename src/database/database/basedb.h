@@ -3,9 +3,9 @@
  * @Brief:
  * @Version: 1.0
  * @Date: 2020-6-6 10:41:42
- * @Author: yangchen@hongkingsystem.cn
+ * @Author: yangchen
  * @Copyright: Copyright (c) 2021 LeHighHongKing All rights reserved.
- * @LastEditors: yangchen@hongkingsystem.cn
+ * @LastEditors: yangchen
  * @LastEditTime: 2021-10-11 11:13:58
  */
 
@@ -37,7 +37,7 @@ class BaseDB {
 public:
     /**
      * @brief: 打开数据库连接
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in] addr 数据库地址，如：127.0.0.1:3306
      * @param[in] user 数据库用户名
      * @param[in] passwd 数据库密码
@@ -52,7 +52,7 @@ public:
 
     /**
      * @brief: 关闭连接
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in] 无
      * @param[out] 无
      * @return 无
@@ -61,7 +61,7 @@ public:
 
     /**
      * @brief:  执行sql
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in] sql sql语句
      * @param[out] ret_code 执行结果
      * @return 返回更新的记录条数
@@ -70,7 +70,7 @@ public:
 
     /**
      * @brief: 处理prepared statement
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in] sql sql语句
      * @param[out] ret_code 执行结果
      * @return
@@ -80,7 +80,7 @@ public:
 
     /**
      * @brief: 执行查询，返回结果
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in] sql 查询的sql
      * @param[out] ret_code 执行结果
      * @return 返回结果集
@@ -99,7 +99,7 @@ public:
 
     /**
      * 设置是否自动提交
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in] bflag 是否自动提交，true是  false否
      * @param[out] 无
      * @return 返回设置结果 0成功 非0失败
@@ -110,7 +110,7 @@ public:
 
     /**
      * 开始事务处理
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in] 无
      * @param[out] 无
      * @return 0成功 非0失败
@@ -119,7 +119,7 @@ public:
 
     /**
      * 提交事务
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in] 无
      * @param[out] 无
      * @return 0成功 非0失败
@@ -128,7 +128,7 @@ public:
 
     /**
      * 事务回滚
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in] 无
      * @param[out] 无
      * @return 0成功 非0失败

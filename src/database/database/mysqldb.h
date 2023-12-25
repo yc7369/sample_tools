@@ -3,9 +3,9 @@
  * @Brief: mysql操作类
  * @Version: 1.0
  * @Date: 2020-06-06 11:13:58
- * @Author: yangchen@hongkingsystem.cn
+ * @Author: yangchen
  * @Copyright: Copyright (c) 2021 LeHighHongKing All rights reserved.
- * @LastEditors: yangchen@hongkingsystem.cn
+ * @LastEditors: yangchen
  * @LastEditTime: 2021-10-11 11:31:15
  */
 
@@ -30,7 +30,7 @@ public:
 
     /**
      * @brief: 打开数据库
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in] addr 数据库地址
      * @param[in] user 数据库登录用户名
      * @param[in] passwd 数据库密码
@@ -45,7 +45,7 @@ public:
 
     /**
      * @brief: 关闭数据库
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in]
      * @param[out]
      * @return
@@ -54,7 +54,7 @@ public:
 
     /**
      * @brief: 执行sql
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in] sql sql语句
      * @param[out] ret_code 数据库执行结果返回错误码
      * @return 返回记录数
@@ -63,7 +63,7 @@ public:
 
     /**
      * @brief: 处理prepared statement
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in] sql sql语句
      * @param[out] ret_code 错误码
      * @return 执行结果
@@ -72,7 +72,7 @@ public:
 
     /**
      * @brief: 查询
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in] sql 查询语句
      * @param[out] ret_code 返回错误码
      * @return 查询的结果集
@@ -81,7 +81,7 @@ public:
 
     /**
      * @brief: 获取数据库标识
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in]
      * @param[out]
      * @return 数据库标识
@@ -90,7 +90,7 @@ public:
 
     /**
      * @brief: 判断数据库是否打开
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in]
      * @param[out]
      * @return true打开 false关闭
@@ -99,7 +99,7 @@ public:
 
     /**
      * @brief: 重连
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in]
      * @param[out]
      * @return true成功 false失败
@@ -108,7 +108,7 @@ public:
 
     /**
      * @brief: 判断数据库是否可用
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in]
      * @param[out]
      * @return true可用 false不可用
@@ -117,7 +117,7 @@ public:
 
     /**
      * 设置是否自动提交
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in] bflag 是否自动提交，true是  false否
      * @param[out] 无
      * @return 返回设置结果 0成功 非0失败
@@ -128,7 +128,7 @@ public:
 
     /**
      * 设置事务点，每次会重置前一个事务点
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in] point 事务点标识，同一次事务处理过程中必须唯一
      * @param[out] 无
      * @return 0成功 非0失败
@@ -137,7 +137,7 @@ public:
 
     /**
      * 提交事务
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in] 无
      * @param[out] 无
      * @return 0成功 非0失败
@@ -146,7 +146,7 @@ public:
 
     /**
      * 事务回滚
-     * @author: yangchen@hongkingsystem.cn
+     * @author: yangchen
      * @param[in]
      * flag是否回滚到上一次保存的事务点，true回滚到上一个事务点，false全部回滚
      * @param[out] 无
