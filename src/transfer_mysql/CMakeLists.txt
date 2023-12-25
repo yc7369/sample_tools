@@ -1,17 +1,16 @@
 # all other
 project(transfer_mysql)
 
-link_directories(${PROJECT_SOURCE_DIR}/lib  LIBRARY_OUTPUT_PATH)
-include_directories(include)
+
+# link_directories(${PROJECT_SOURCE_DIR}/lib  LIBRARY_OUTPUT_PATH)
+include_directories(include ${TOP_CMAKE_DIR}/deps/mysql/include)
 
 add_executable(transfer_mysql main.cpp slog.cpp)
-
-find_library(SSL_LIB ssl PATHS ./lib)
-find_library(CRYPTO_LIB crypto PATHS ./lib)
 
 # protobuf
 link_directories(${CMAKE_SOURCE_DIR}/deps/protobuf/lib
         ${CMAKE_SOURCE_DIR}/deps/protobuf/lib
+        ${TOP_CMAKE_DIR}/deps/mysql/lib
 )
 
 target_link_libraries(transfer_mysql PRIVATE
@@ -19,9 +18,9 @@ target_link_libraries(transfer_mysql PRIVATE
         dl
         pthread
         mybase
-        mysqlcppconn-static
-        mysqlclient
-        ${SSL_LIB}
-        ${CRYPTO_LIB}
-        resolv
+        ${TOP_CMAKE_DIR}/deps/mysql/lib/libmysqlcppconn-static.a
+        ${TOP_CMAKE_DIR}/deps/mysql/lib/libmysqlclient.a
+        ${TOP_CMAKE_DIR}/deps/mysql/lib/libssl.so
+        ${TOP_CMAKE_DIR}/deps/mysql/lib/libcrypto.so
+        ${TOP_CMAKE_DIR}/deps/mysql/lib/libresolv.so
 )

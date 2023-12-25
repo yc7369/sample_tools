@@ -22,7 +22,7 @@ add_subdirectory(libevent)
 # add_subdirectory(hiredis)
 # add_subdirectory(redispp)
 add_subdirectory(spdlog)
-# add_subdirectory(mysqlconn)
+# add_subdirectory(mysql)
 
 
 # file copy

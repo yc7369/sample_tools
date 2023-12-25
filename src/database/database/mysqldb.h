@@ -18,8 +18,8 @@
 #include <boost/scoped_ptr.hpp>
 
 #include "basedb.h"
-#include "mysql/mysql_connection.h"
-#include "mysql/mysql_driver.h"
+#include "mysql_connection.h"
+#include "mysql_driver.h"
 namespace sql {
 
 //
