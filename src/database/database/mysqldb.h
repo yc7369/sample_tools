@@ -1,10 +1,10 @@
 /*
- * @FilePath: /lh_framework/include/database/mysqldb.h
+ * @FilePath: mysqldb.h
  * @Brief: mysql操作类
  * @Version: 1.0
- * @Date: 2020-06-06 11:13:58
+ * @Date: 2023-06-06 11:13:58
  * @Author: yangchen
- * @Copyright: Copyright (c) 2021 LeHighHongKing All rights reserved.
+ * @Copyright: Copyright (c) 2021  All rights reserved.
  * @LastEditors: yangchen
  * @LastEditTime: 2021-10-11 11:31:15
  */
@@ -15,7 +15,6 @@
 #include <cppconn/connection.h>
 
 #include <atomic>
-#include <boost/scoped_ptr.hpp>
 
 #include "basedb.h"
 #include "mysql_connection.h"
@@ -164,7 +163,7 @@ private:
     int MysqlRollback(bool flag, SQLError& ret_code);
 
     std::shared_ptr<Connection> connection_;
-    boost::scoped_ptr<sql::Savepoint> point_;
+    std::unique_ptr<sql::Savepoint> point_;
     std::atomic_bool is_begin_trans_ = ATOMIC_FLAG_INIT;
     int idx_ = 0;
 };

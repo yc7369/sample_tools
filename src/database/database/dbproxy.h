@@ -1,10 +1,10 @@
 /*
- * @FilePath: /lh_framework/include/database/dbproxy.h
+ * @FilePath: dbproxy.h
  * @Brief: 数据库接口封装类
  * @Version: 1.0
- * @Date: 2020-10-26 19:31:16
+ * @Date: 2023-10-26 19:31:16
  * @Author: yangchen
- * @Copyright: Copyright (c) 2021 LeHighHongKing All rights reserved.
+ * @Copyright: Copyright (c) 2021  All rights reserved.
  * @LastEditors: yangchen
  * @LastEditTime: 2021-10-11 11:27:37
  */

@@ -1,7 +1,7 @@
 //
 // Created by yangchen on 6/6/20.
 
-// Copyright (c) 2020 LeHighHongKing All rights reserved.
+// Copyright (c) 2023  All rights reserved.
 //
 
 #include "database/mysqldb.h"

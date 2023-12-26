@@ -1,10 +1,10 @@
 /*
- * @FilePath: /lh_framework/include/database/dbman.h
+ * @FilePath: dbman.h
  * @Brief: 数据库连接池管理类
  * @Version: 1.0
- * @Date: 2020-06-06 10:34:50
+ * @Date: 2023-06-06 10:34:50
  * @Author: yangchen
- * @Copyright: Copyright (c) 2021 LeHighHongKing All rights reserved.
+ * @Copyright: Copyright (c) 2021  All rights reserved.
  * @LastEditors: yangchen
  * @LastEditTime: 2021-10-13 16:49:07
  */

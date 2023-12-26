@@ -2,11 +2,11 @@
  * @FilePath: basedb.h
  * @Brief:
  * @Version: 1.0
- * @Date: 2020-6-6 10:41:42
+ * @Date: 2023-6-6 10:41:42
  * @Author: yangchen
- * @Copyright: Copyright (c) 2021 LeHighHongKing All rights reserved.
+ * @Copyright: Copyright (c) 2021  All rights reserved.
  * @LastEditors: yangchen
- * @LastEditTime: 2021-10-11 11:13:58
+ * @LastEditTime: 2023-10-11 11:13:58
  */
 
 #ifndef LHSERVER_BASEDB_H
