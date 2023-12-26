@@ -7,6 +7,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} $ENV{CXXFLAGS} -std=c++17 -pthread -Wall
 set(CMAKE_CXX_FLAGS_RELEASE " -O2")
 set(CMAKE_CXX_FLAGS_DEBUG "-O0 -g -ggdb")
 
+add_definitions(-Wno-unused-function)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 if (NOT ${CUSTOM_CMAKE_DIR})

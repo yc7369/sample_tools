@@ -22,5 +22,5 @@ zlog)
 # MESSAGE(STATUS "other platform: ${CMAKE_SYSTEM_NAME}")
 
 add_executable(mysqltest main.cpp)
-target_link_libraries(mysqltest database mysqlclient)
+target_link_libraries(mysqltest database)
 
