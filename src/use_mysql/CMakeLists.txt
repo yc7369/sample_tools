@@ -18,9 +18,5 @@ target_link_libraries(use_mysql PRIVATE
         dl
         pthread
         mybase
-        ${TOP_CMAKE_DIR}/deps/mysql/lib/libmysqlcppconn-static.a
-        ${TOP_CMAKE_DIR}/deps/mysql/lib/libmysqlclient.a
-        ${TOP_CMAKE_DIR}/deps/mysql/lib/libssl.so
-        ${TOP_CMAKE_DIR}/deps/mysql/lib/libcrypto.so
-        ${TOP_CMAKE_DIR}/deps/mysql/lib/libresolv.so
+        mysqldb
 )

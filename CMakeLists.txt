@@ -91,6 +91,8 @@ target_include_directories(libevent INTERFACE
 
 #src
 add_subdirectory(deps)
+
+add_subdirectory(deps/mysqldb)
 add_subdirectory(src)
 
 

@@ -11,11 +11,7 @@ aux_source_directory(${TOP_CMAKE_DIR}/deps/mysql MYSQL_SRC_FILES)
 
 add_library(database SHARED ${SRC_FILES} ${MYSQL_SRC_FILES})
 target_link_libraries(database 
-mysqlcppconn-static
-mysqlclient
-${TOP_CMAKE_DIR}/deps/mysql/lib/libssl.so
-${TOP_CMAKE_DIR}/deps/mysql/lib/libcrypto.so
-resolv
+mysqldb
 zlog)
 
 # SET_TARGET_PROPERTIES(database_so PROPERTIES OUTPUT_NAME "database")

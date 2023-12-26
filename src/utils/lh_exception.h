@@ -4,7 +4,7 @@
  * @Version: 1.0
  * @Date: 2020-10-27 16:53:30
  * @Author: yangchen
- * @Copyright: Copyright (c) 2021 LeHighHongKing All rights reserved.
+ * @Copyright: Copyright (c) 2021  All rights reserved.
  * @LastEditors: yangchen
  * @LastEditTime: 2021-10-12 10:15:09
  */
